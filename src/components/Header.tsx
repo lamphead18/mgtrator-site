@@ -8,7 +8,6 @@ const Header = () => {
   return (
     <header className="bg-[#213a77] text-white fixed top-0 left-0 w-full z-50 shadow">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center h-[96px]">
-        {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <img
             src={logo}
@@ -18,23 +17,21 @@ const Header = () => {
           <span className="sr-only">MG Trator Peças</span>
         </a>
 
-        {/* Menu desktop */}
-        <nav className="hidden md:flex space-x-6 text-sm font-medium">
-          <a href="#" className="hover:underline">
+        <nav className="hidden md:flex space-x-6 text-sm font-semibold tracking-wide">
+          <a href="#" className="hover:underline underline-offset-4">
             Início
           </a>
-          <a href="#produtos" className="hover:underline">
+          <a href="#produtos" className="hover:underline underline-offset-4">
             Produtos
           </a>
-          <a href="#marcas" className="hover:underline">
+          <a href="#marcas" className="hover:underline underline-offset-4">
             Marcas
           </a>
-          <a href="#contato" className="hover:underline">
+          <a href="#contato" className="hover:underline underline-offset-4">
             Contato
           </a>
         </nav>
 
-        {/* Botão mobile */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden"
@@ -44,7 +41,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Menu dropdown mobile */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden bg-[#213a77] ${
           menuOpen ? "max-h-96 py-4" : "max-h-0 py-0"

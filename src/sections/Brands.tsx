@@ -12,9 +12,6 @@ const Brands = () => {
           <div className="w-32 h-16 bg-gray-300 rounded-md flex items-center justify-center">
             Caterpillar
           </div>
-          <div className="w-32 h-16 bg-gray-300 rounded-md flex items-center justify-center">
-            Komatsu
-          </div>
         </div>
       </div>
     </section>
