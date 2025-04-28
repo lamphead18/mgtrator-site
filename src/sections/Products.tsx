@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { getShowcase } from "../services/firebase";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
+import Loader from "../components/Loader";
 import { motion } from "framer-motion";
 
 type Product = {
@@ -14,8 +15,8 @@ type Product = {
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const perPage = 3;
 
   useEffect(() => {
@@ -26,17 +27,32 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = products.filter(
-    (product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.id.includes(searchTerm)
-  );
+  const filteredProducts = useMemo(() => {
+    return products.filter(
+      (product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.id.includes(searchTerm)
+    );
+  }, [products, searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   const totalPages = Math.ceil(filteredProducts.length / perPage);
-  const paginated = filteredProducts.slice(
+
+  const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * perPage,
     currentPage * perPage
   );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({
+      top: document.getElementById("produtos")?.offsetTop || 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <motion.section
@@ -58,47 +74,62 @@ const Products = () => {
           Nossos Produtos
         </h2>
 
-        <SearchBar
-          onSearch={(term) => {
-            setSearchTerm(term);
-            setCurrentPage(1);
-          }}
-        />
+        <SearchBar onSearch={(term) => setSearchTerm(term)} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {paginated.length > 0 ? (
-            paginated.map((produto) => (
-              <ProductCard
-                key={produto.id}
-                id={produto.id}
-                title={produto.title}
-                image={produto.imageUrl}
-                whatsapp={produto.whatsapp || "https://wa.me/5585981866717"}
-                mercadoLivre={produto.mercadoLivre || "#"}
-              />
-            ))
-          ) : (
-            <p className="col-span-full text-gray-500">
-              Nenhum produto encontrado.
-            </p>
-          )}
-        </div>
+        {products.length === 0 ? (
+          <Loader />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {paginatedProducts.length > 0 ? (
+              paginatedProducts.map((produto) => (
+                <ProductCard
+                  key={produto.id}
+                  id={produto.id}
+                  title={produto.title}
+                  image={produto.imageUrl}
+                  whatsapp={produto.whatsapp || "https://wa.me/5585981866717"}
+                  mercadoLivre={produto.mercadoLivre || "#"}
+                />
+              ))
+            ) : (
+              <p className="col-span-full text-gray-500">
+                Nenhum produto encontrado.
+              </p>
+            )}
+          </div>
+        )}
 
         {totalPages > 1 && (
-          <div className="mt-8 flex justify-center gap-2">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-4 py-2 rounded font-medium transition ${
-                  currentPage === i + 1
-                    ? "bg-[#213a77] text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
+          <div className="mt-8 flex justify-center items-center gap-6">
+            <button
+              onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+              disabled={currentPage === 1}
+              className={`px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                currentPage === 1
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-[#213a77] text-white hover:bg-[#1b2f5c] hover:scale-105"
+              }`}
+            >
+              ← Anterior
+            </button>
+
+            <span className="text-gray-600 font-medium text-sm">
+              Página {currentPage} de {totalPages}
+            </span>
+
+            <button
+              onClick={() =>
+                handlePageChange(Math.min(currentPage + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className={`px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                currentPage === totalPages
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-[#213a77] text-white hover:bg-[#1b2f5c] hover:scale-105"
+              }`}
+            >
+              Próximo →
+            </button>
           </div>
         )}
       </motion.div>
