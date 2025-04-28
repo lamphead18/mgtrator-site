@@ -87,8 +87,11 @@ const Products = () => {
                   id={produto.id}
                   title={produto.title}
                   image={produto.imageUrl}
-                  whatsapp={produto.whatsapp || "https://wa.me/5585981866717"}
-                  mercadoLivre={produto.mercadoLivre || "#"}
+                  whatsapp={produto.whatsapp || "https://wa.me/63999828455"}
+                  mercadoLivre={
+                    produto.mercadoLivre ||
+                    "https://lista.mercadolivre.com.br/_CustId_2350890064?item_id=MLB4022137373&category_id=MLB456620&seller_id=2350890064&client=recoview-selleritems&recos_listing=true#origin=vip&component=sellerData&typeSeller=classic"
+                  }
                 />
               ))
             ) : (

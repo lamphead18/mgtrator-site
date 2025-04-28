@@ -1,20 +1,21 @@
 {
   "name": "MG Trator Peças",
   "short_name": "MG Trator",
-  "description": "Especialistas em peças genuínas e compatíveis para máquinas pesadas.",
+  "description": "Especialistas em peças genuínas e compatíveis para máquinas pesadas como Volvo e Caterpillar.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f5f5",
+  "background_color": "#213a77",
   "theme_color": "#213a77",
   "lang": "pt-BR",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "/icons/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "/icons/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
