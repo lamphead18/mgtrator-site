@@ -22,7 +22,7 @@ const Hero = () => {
         </h1>
         <p className="mt-4 text-lg">
           Trabalhamos com peças genuínas e compatíveis para as principais marcas
-          do setor como Volvo, Komatsu, Caterpillar e muito mais.
+          do setor como Volvo e Caterpillar.
         </p>
         <a
           href="#contato"

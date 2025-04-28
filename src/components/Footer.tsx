@@ -16,15 +16,20 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-3 uppercase text-sm">Contatos</h4>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center justify-center md:justify-start gap-2">
+            <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <Mail className="w-4 h-4" />
-              <a href="mailto:comercial@mgtratorpecas.com.br">
+              <a
+                href="mailto:comercial@mgtratorpecas.com.br"
+                className="hover:underline"
+              >
                 comercial@mgtratorpecas.com.br
               </a>
             </li>
-            <li className="flex items-center justify-center md:justify-start gap-2">
+            <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <Phone className="w-4 h-4" />
-              <a href="63999828455">+55 (63) 9 9982-8455</a>
+              <a href="tel:+5563999828455" className="hover:underline">
+                +55 (63) 9 9982-8455
+              </a>
             </li>
           </ul>
         </div>
@@ -32,9 +37,14 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-3 uppercase text-sm">Redes Sociais</h4>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center justify-center md:justify-start gap-2">
+            <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <Instagram className="w-4 h-4" />
-              <a href="#" target="_blank">
+              <a
+                href="https://www.instagram.com/mg_tratorpecas_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
                 Instagram
               </a>
             </li>
@@ -42,11 +52,21 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-bold mb-3 uppercase text-sm">Loja Física</h4>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center justify-center md:justify-start gap-2">
-              <MapPin className="w-4 h-4" />
+          <h4 className="font-bold mb-3 uppercase text-sm">Lojas Físicas</h4>
+          <ul className="space-y-4 text-sm">
+            <li className="flex items-start justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
+              <MapPin className="w-4 h-4 mt-1" />
               <span>Av. Guajajaras, 402 - Tirirical</span>
+            </li>
+            <li className="flex items-start justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
+              <MapPin className="w-4 h-4 mt-1" />
+              <span>
+                Palmas-TO
+                <br />
+                Q ARSE 82 AVENIDA NS 10 Nº 806
+                <br />
+                Bairro Plano Diretor Sul
+              </span>
             </li>
           </ul>
         </div>
