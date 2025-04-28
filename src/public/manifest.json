@@ -1,0 +1,22 @@
+{
+  "name": "MG Trator Peças",
+  "short_name": "MG Trator",
+  "description": "Especialistas em peças genuínas e compatíveis para máquinas pesadas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#213a77",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
