@@ -56,7 +56,11 @@ const Footer = () => {
           <ul className="space-y-4 text-sm">
             <li className="flex items-start justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <MapPin className="w-4 h-4 mt-1" />
-              <span>Av. Guajajaras, 402 - Tirirical</span>
+              <span>
+                São Luís - MA
+                <br />
+                Av. Guajajaras, 402 - Tirirical
+              </span>
             </li>
             <li className="flex items-start justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <MapPin className="w-4 h-4 mt-1" />
