@@ -17,16 +17,16 @@ const Hero = () => {
         viewport={{ once: true }}
         className="max-w-4xl mx-auto"
       >
-        <h1 className="text-3xl md:text-5xl font-bold text-[#213a77]">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#213a77] text-shadow-md">
           Especialistas em peças e máquinas pesadas
         </h1>
-        <p className="mt-4 text-lg">
+        <p className="mt-4 text-lg text-shadow-md">
           Trabalhamos com peças genuínas e compatíveis para as principais marcas
           do setor como Volvo e Caterpillar.
         </p>
         <a
           href="#contato"
-          className="inline-block mt-6 bg-[#25D366] text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-in-out transform hover:scale-105 hover:opacity-90"
+          className="text-shadow-md inline-block mt-6 bg-[#25D366] text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 ease-in-out transform hover:scale-105 hover:opacity-90"
         >
           Fale com um especialista
         </a>

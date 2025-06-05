@@ -1,35 +1,71 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo_mgtratorpecas_png_branco.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNavClick = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      scrollToSection(sectionId);
+    }
+    setMenuOpen(false);
+  };
 
   return (
     <header className="bg-[#213a77] text-white fixed top-0 left-0 w-full z-50 shadow">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center h-[96px]">
-        <a href="#" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src={logo}
             alt="Logo MG Trator Peças"
-            className="h-20 w-auto object-contain"
+            className="h-20 w-auto object-contain "
           />
           <span className="sr-only">MG Trator Peças</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex space-x-6 text-sm font-semibold tracking-wide">
-          <a href="#" className="hover:underline underline-offset-4">
+          <button
+            onClick={() => handleNavClick("topo")}
+            className="hover:underline underline-offset-4"
+          >
             Início
-          </a>
-          <a href="#produtos" className="hover:underline underline-offset-4">
+          </button>
+          <button
+            onClick={() => handleNavClick("produtos")}
+            className="hover:underline underline-offset-4"
+          >
             Produtos
-          </a>
-          <a href="#marcas" className="hover:underline underline-offset-4">
+          </button>
+          <button
+            onClick={() => handleNavClick("marcas")}
+            className="hover:underline underline-offset-4"
+          >
             Marcas
-          </a>
-          <a href="#contato" className="hover:underline underline-offset-4">
+          </button>
+          <button
+            onClick={() => handleNavClick("localizacao")}
+            className="hover:underline underline-offset-4"
+          >
+            Lojas
+          </button>
+          <button
+            onClick={() => handleNavClick("contato")}
+            className="hover:underline underline-offset-4"
+          >
             Contato
-          </a>
+          </button>
         </nav>
 
         <button
@@ -47,34 +83,36 @@ const Header = () => {
         }`}
       >
         <nav className="flex flex-col items-start px-6 space-y-3 text-sm font-medium">
-          <a
-            href="#"
+          <button
+            onClick={() => handleNavClick("topo")}
             className="hover:underline"
-            onClick={() => setMenuOpen(false)}
           >
             Início
-          </a>
-          <a
-            href="#produtos"
+          </button>
+          <button
+            onClick={() => handleNavClick("produtos")}
             className="hover:underline"
-            onClick={() => setMenuOpen(false)}
           >
             Produtos
-          </a>
-          <a
-            href="#marcas"
+          </button>
+          <button
+            onClick={() => handleNavClick("marcas")}
             className="hover:underline"
-            onClick={() => setMenuOpen(false)}
           >
             Marcas
-          </a>
-          <a
-            href="#contato"
+          </button>
+          <button
+            onClick={() => handleNavClick("localizacao")}
             className="hover:underline"
-            onClick={() => setMenuOpen(false)}
+          >
+            Lojas
+          </button>
+          <button
+            onClick={() => handleNavClick("contato")}
+            className="hover:underline"
           >
             Contato
-          </a>
+          </button>
         </nav>
       </div>
     </header>

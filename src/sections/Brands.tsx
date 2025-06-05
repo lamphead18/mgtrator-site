@@ -6,7 +6,7 @@ const Brands = () => {
   return (
     <section id="marcas" className="py-16 px-6 bg-[#f5f5f5] text-black">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-2xl md:text-4xl font-bold mb-12 text-[#213a77]">
+        <h2 className="text-2xl md:text-4xl font-bold mb-12 text-[#213a77] text-shadow-md">
           Trabalhamos com as principais marcas
         </h2>
 
@@ -21,7 +21,7 @@ const Brands = () => {
             <img
               src={volvoLogo}
               alt="Logo Volvo"
-              className="object-contain h-12 md:h-16 transition-transform transition-opacity duration-300 ease-in-out hover:scale-105 hover:opacity-80"
+              className="object-contain h-12 md:h-16 transition-opacity duration-300 ease-in-out hover:scale-105 hover:opacity-80"
             />
           </motion.div>
 
@@ -35,7 +35,7 @@ const Brands = () => {
             <img
               src={caterpillarLogo}
               alt="Logo Caterpillar"
-              className="object-contain h-12 md:h-16 transition-transform transition-opacity duration-300 ease-in-out hover:scale-105 hover:opacity-80"
+              className="object-contain h-12 md:h-16 transition-opacity duration-300 ease-in-out hover:scale-105 hover:opacity-80"
             />
           </motion.div>
         </div>

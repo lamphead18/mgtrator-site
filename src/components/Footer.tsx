@@ -31,6 +31,12 @@ const Footer = () => {
                 +55 (63) 9 9982-8455
               </a>
             </li>
+            <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
+              <Phone className="w-4 h-4" />
+              <a href="tel:+5563999828455" className="hover:underline">
+                +55 (98) 9 9176-8988
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -69,7 +75,7 @@ const Footer = () => {
                 <br />
                 Q ARSE 82 AVENIDA NS 10 Nº 806
                 <br />
-                Bairro Plano Diretor Sul
+                Plano Diretor Sul
               </span>
             </li>
           </ul>

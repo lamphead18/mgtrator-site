@@ -70,7 +70,7 @@ const Products = () => {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto text-center"
       >
-        <h2 className="text-3xl font-bold mb-8 text-[#213a77]">
+        <h2 className="text-3xl font-bold mb-8 text-[#213a77] text-shadow-md">
           Nossos Produtos
         </h2>
 
@@ -79,7 +79,7 @@ const Products = () => {
         {products.length === 0 ? (
           <Loader />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-shadow-md">
             {paginatedProducts.length > 0 ? (
               paginatedProducts.map((produto) => (
                 <ProductCard
