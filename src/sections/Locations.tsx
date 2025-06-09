@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import fachadaSLZ from "../assets/fachadaSLZ.jpeg";
+import fachadaPL from "../assets/fachadaPL.jpeg";
 
 const storeLocations = [
   {
@@ -13,7 +14,8 @@ const storeLocations = [
     id: "palmas",
     name: "Palmas - TO",
     address: "Q ARSE 82 AVENIDA NS 10 Nº 806, Plano Diretor Sul, Palmas - TO",
-    hasImage: false,
+    image: fachadaPL,
+    hasImage: true,
   },
 ];
 
