@@ -28,13 +28,13 @@ const Footer = () => {
             <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <Phone className="w-4 h-4" />
               <a href="tel:+5563999828455" className="hover:underline">
-                +55 (63) 9 9982-8455
+                +55 (98) 9 9176-8988 - São Luís - MA
               </a>
             </li>
             <li className="flex items-center justify-center md:justify-start gap-2 hover:opacity-80 transition-opacity">
               <Phone className="w-4 h-4" />
               <a href="tel:+5563999828455" className="hover:underline">
-                +55 (98) 9 9176-8988
+                +55 (63) 9 9982-8455 - Palmas - TO
               </a>
             </li>
           </ul>

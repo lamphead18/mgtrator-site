@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import Loader from "../components/Loader";
 import { motion } from "framer-motion";
+import { Grid, List } from "lucide-react";
 
 type Product = {
   id: string;
@@ -17,6 +18,7 @@ const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAll, setShowAll] = useState(false);
   const perPage = 3;
 
   useEffect(() => {
@@ -41,10 +43,9 @@ const Products = () => {
 
   const totalPages = Math.ceil(filteredProducts.length / perPage);
 
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * perPage,
-    currentPage * perPage
-  );
+  const displayedProducts = showAll 
+    ? filteredProducts 
+    : filteredProducts.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -52,6 +53,11 @@ const Products = () => {
       top: document.getElementById("produtos")?.offsetTop || 0,
       behavior: "smooth",
     });
+  };
+
+  const toggleViewMode = () => {
+    setShowAll(!showAll);
+    setCurrentPage(1);
   };
 
   return (
@@ -70,18 +76,28 @@ const Products = () => {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto text-center"
       >
-        <h2 className="text-3xl font-bold mb-8 text-[#213a77] text-shadow-md">
+        <h2 className="text-3xl font-bold mb-8 text-[#213a77]">
           Nossos Produtos
         </h2>
 
-        <SearchBar onSearch={(term) => setSearchTerm(term)} />
+        <div className="flex flex-col items-center gap-4 mb-8">
+          <SearchBar onSearch={(term) => setSearchTerm(term)} />
+          
+          <button
+            onClick={toggleViewMode}
+            className="flex items-center gap-2 px-4 py-2 bg-[#213a77] text-white rounded-lg hover:bg-[#1b2f5c] transition-colors"
+          >
+            {showAll ? <Grid className="w-4 h-4" /> : <List className="w-4 h-4" />}
+            {showAll ? "Visualização Paginada" : "Ver Todos"}
+          </button>
+        </div>
 
         {products.length === 0 ? (
           <Loader />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-shadow-md">
-            {paginatedProducts.length > 0 ? (
-              paginatedProducts.map((produto) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {displayedProducts.length > 0 ? (
+              displayedProducts.map((produto) => (
                 <ProductCard
                   key={produto.id}
                   id={produto.id}
@@ -102,7 +118,7 @@ const Products = () => {
           </div>
         )}
 
-        {totalPages > 1 && (
+        {!showAll && totalPages > 1 && (
           <div className="mt-8 flex justify-center items-center gap-6">
             <button
               onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
@@ -133,6 +149,14 @@ const Products = () => {
             >
               Próximo →
             </button>
+          </div>
+        )}
+
+        {showAll && filteredProducts.length > 6 && (
+          <div className="mt-8">
+            <p className="text-gray-600 text-sm">
+              Exibindo todos os {filteredProducts.length} produtos
+            </p>
           </div>
         )}
       </motion.div>
