@@ -43,9 +43,12 @@ const Products = () => {
 
   const totalPages = Math.ceil(filteredProducts.length / perPage);
 
-  const displayedProducts = showAll 
-    ? filteredProducts 
-    : filteredProducts.slice((currentPage - 1) * perPage, currentPage * perPage);
+  const displayedProducts = showAll
+    ? filteredProducts
+    : filteredProducts.slice(
+        (currentPage - 1) * perPage,
+        currentPage * perPage
+      );
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -76,18 +79,22 @@ const Products = () => {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto text-center"
       >
-        <h2 className="text-3xl font-bold mb-8 text-[#213a77]">
+        <h2 className="text-3xl font-bold mb-8 text-[#213a77] text-shadow-md">
           Nossos Produtos
         </h2>
 
         <div className="flex flex-col items-center gap-4 mb-8">
           <SearchBar onSearch={(term) => setSearchTerm(term)} />
-          
+
           <button
             onClick={toggleViewMode}
             className="flex items-center gap-2 px-4 py-2 bg-[#213a77] text-white rounded-lg hover:bg-[#1b2f5c] transition-colors"
           >
-            {showAll ? <Grid className="w-4 h-4" /> : <List className="w-4 h-4" />}
+            {showAll ? (
+              <Grid className="w-4 h-4" />
+            ) : (
+              <List className="w-4 h-4" />
+            )}
             {showAll ? "Visualização Paginada" : "Ver Todos"}
           </button>
         </div>
